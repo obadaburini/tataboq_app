@@ -1,16 +1,27 @@
-# tataboq_app
+# Image Match
 
-A new Flutter project.
+A simple Arabic Flutter image-matching game. Tap either picture to randomly draw both pictures again; matching images display a success message.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+Real local web captures. The matching pair was reached through the application's own button actions, without setting internal state.
 
-A few resources to get you started if this is your first Flutter project:
+| Initial pair | Matching pair |
+| --- | --- |
+| ![Initial different images](docs/screenshots/initial-pair.png) | ![Matching images and success message](docs/screenshots/matching-pair.png) |
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## How it works
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+lib/main.dart contains the Material interface and StatefulWidget. dart:math selects each image independently from eight bundled images in images/. A setState call updates both images and the Arabic feedback text. This is a random matching exercise; it does not implement a memory-card grid, levels, scoring, persistence, or a backend.
+
+## Run
+
+With Flutter and Dart 3.10.8 or a compatible SDK installed:
+
+```sh
+flutter pub get
+flutter run -d chrome
+flutter build web --release --no-web-resources-cdn
+```
+
+No credentials or services are required. The release web build passed with Flutter 3.38.9 and both initial/success states were exercised locally. Native platform builds were not validated.
